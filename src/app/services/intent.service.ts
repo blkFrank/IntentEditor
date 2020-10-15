@@ -25,7 +25,12 @@ export class IntentService {
 
   }
 
-  listIntent(intent: IntentCommand): Observable<IntentList>{
+  getIntent(intentName: string): Observable<IntentCommand>{
+    const newURL = this.serverUrl + 'intent/get-intent';
+    return this.http.post<IntentCommand>(newURL, intentName);
+  }
+
+  getlistIntent(intent: IntentCommand): Observable<IntentList>{
     const newURL = this.serverUrl + 'intent/list-intent';
     return this.http.post<IntentList>(newURL, intent);
   }
